@@ -1,0 +1,169 @@
+
+/* CSS funciona no efeito cascata o que significa que
+a última declaração igual é a que vale, a não ser que 
+tenha especifidade trabalhando por "pesos": id, class, cascata
+*/
+* {
+    margin: 0;
+    padding: 0; /* todo esse bloco serve para retirar os espaços padrão da página*/
+    box-sizing: border-box;
+}
+
+ul {
+    list-style: none; /* retira os pontinhos de marcação*/
+}
+
+header {
+    margin-top: 32px;
+    height: 150px;
+}
+
+header img{
+    margin: auto;
+    padding: 5px;
+    border-radius: 50%;
+    width: 100%;
+}
+
+header div {
+    display: flex;
+    width: 150px;
+    margin: auto;
+    padding: 4px;
+    /* o não tem como usar o text align porque o div não tem texto */
+    border-radius: 50%;
+    background-image: linear-gradient(90deg, #9572FC 0%, #43E7AD 50.52%, #E2D45C 100%);    
+    transition: transform .3s;
+}
+
+header div:hover {
+    transform: scale(1.1);
+}
+
+body{
+    background-image: url(./assets/bg.jpg); /* colocar a imagem */
+    background-position: top center; /* ´posição da imagem */
+    background-size: 100% auto; /* Se adapte sempre ao tamanho da tela*/
+    background-repeat: no-repeat; /* Para que a imagem não repitisse */
+    background-color: #121214; /* formato hexadecimal */
+}
+
+body {
+    font-family: 'inter', sans-serif;
+    line-height: 160%;
+}
+
+section {
+    color: white;
+    background-image: linear-gradient(90deg, #9572FC 0%, #43E7AD 50.52%, #E2D45C 100%);
+    padding-top: 4px;
+    border-radius: 10px
+    ;
+}
+
+section div {
+    background-color: #2A2634;
+    padding: 32px;
+    padding-top: 24px;
+    border-radius: 8px;
+}
+
+section h2{
+    /* font-weight: 900;
+    font-size: 24px;  tudo isso o navegador já fornece então não é necessário*/
+    letter-spacing: -0.47px;
+}
+
+section p {
+    letter-spacing: -0.18px;
+    color: #A1A1AA;
+}
+
+ul {
+    display: flex; /* organização das coisas na tela... Se colocar None, os elementos irão sumir */
+    flex-wrap: wrap;
+    gap: 16px;
+    /* Quando uma página é organizada apenas em HTML, note que funciona
+    como se fossem caixas, uma fica abaixo da outra. Isso porque há
+    um padrão no HTML, em que ele bloqueia toda uma linha para cada tag,]
+    fazendo com  que o próximo elemento seja colocado embaixo. Elementos do tipo
+    block <li> e inline <a>. o flex desabilita essa função dentro do elemento "block"
+    de ul */
+}
+
+section ul li{
+    transition: transform .3s;
+}
+
+section ul li:hover{
+    transform: scale(1.1);
+}
+
+.games-list  img {
+    width: 90px;
+    border-radius: 8px;
+}
+
+.channel-list img {
+    width: 70px;
+    border-radius: 50%;
+    border: 1px solid #443E54;
+}
+
+main{
+    max-width: 580px; /* todas as coisas dentro dessa parte irão tentar manter essa largura como máxima */
+    width: 90%; /* tamanho referente a largura da tela */
+    margin: 32px auto; /* irá calcular a proporção automaticamente no navegador, quando divididos por espaço, o primeiro se refere a top e bottom, e o outro as laterais */
+    display: grid;
+    gap: 24px;
+
+}
+
+/* animations */
+
+header div{
+    animation: fromTop .7s .4s backwards;
+}
+
+main section{
+    animation: fromBottom .7s backwards;
+}
+
+main section:nth-child(1) {
+    animation-delay: 0;
+    /* escolher as partes/filhos da seção*/
+}
+
+main section:nth-child(2) {
+    animation-delay: .4s;
+    /* escolher as partes/filhos da seção*/
+}
+
+main section:nth-child(3) {
+    animation-delay: .8s;
+    /* escolher as partes/filhos da seção*/
+}
+
+@keyframes fromTop {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    } 
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fromBottom{
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    } 
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
